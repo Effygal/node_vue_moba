@@ -18,5 +18,11 @@ module.exports = app => {
         const model = await Category.findById(req.params.id)
         res.send(model)
     })
+    router.delete('/categories/:id', async(req, res) => {
+        const model = await Category.findByIdAndDelete(req.params.id)
+        res.send({
+            seccess: true
+        })
+    })
     app.use('/admin/api', router)
 }
