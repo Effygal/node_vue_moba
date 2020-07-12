@@ -4,12 +4,12 @@ const schema = new mongoose.Schema({
     name: {type: String},
     avator: {type: String},
     title: {type: String},
-    categorys: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Category' }],
+    categories: [{ type: mongoose.SchemaTypes.ObjectId, ref: 'Category' }],
     scores: {
         difficult: {type: Number},
         skills: {type: Number},
         attack: {type: Number},
-        surive: {type: Number},
+        survive: {type: Number},
     },
     skills: [
         {
