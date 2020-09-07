@@ -20,17 +20,7 @@ module.exports = app => {
         res.send(model)
     })
     //资源列表
-    router.get('/',async(req, res, next) => {
-        //校验用户是否登录
-        const token = String(req.headers.authorization || '').split(' ').pop()
-        assert(token, 401, '请先登录')
-        const { id } = jwt.verify(token, app.get('secret'))
-        assert(id, 401, '请先登录')
-        req.user = await AdminUser.findById(id)
-        assert(req.user, 401, '请先登录')
-        await next()
-
-    }, async(req, res) => {
+    router.get('/', async(req, res) => {
         const queryOptions = {}
         
         if(req.Model.modelName === 'Category'){
@@ -45,6 +35,9 @@ module.exports = app => {
         const model = await req.Model.findById(req.params.id)
         res.send(model)
     })
+    //登录校验中间件
+    const authMiddelware = require('../../middleware/auth')
+    const resourceMiddleware = require('../../middleware/resource')
     //删除资源 
     router.delete('/:id', async(req, res) => {
         const model = await req.Model.findByIdAndDelete(req.params.id)
@@ -52,17 +45,11 @@ module.exports = app => {
             seccess: true
         })
     })
-    app.use('/admin/api/rest/:resource',(req, res, next) => {
-        //小写复数转大写单数
-        const modelName = require('inflection').classify(req.params.resource)
-        req.Model = require(`../../models/${modelName}`)
-
-        next() 
-    } , router)
+    app.use('/admin/api/rest/:resource', authMiddelware(), resourceMiddleware(), router)
 
     const multer = require('multer')
     const upload = multer({dest: __dirname + '/../../uploads'})
-    app.post('/admin/api/upload',upload.single('file'), async(req, res) => {
+    app.post('/admin/api/upload', authMiddelware(), upload.single('file'), async(req, res) => {
         const file = req.file
         file.url = `http://localhost:3000/uploads/${file.filename}`
         res.send(file)
