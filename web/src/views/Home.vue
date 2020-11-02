@@ -1,6 +1,19 @@
 <template>
   <div>
-    首页
+    <swiper :options="swiperOption">
+      <swiper-slide>
+        <img class="w-100" src="../assets/images/1dea8e59a481e6990ae1cd3afe819fb9.jpeg" alt="">
+      </swiper-slide>
+      <swiper-slide>
+        <img class="w-100" src="../assets/images/8bddffaac919e515dcf3a0035965b677.jpeg" alt="">
+      </swiper-slide>
+      <swiper-slide>
+        <img class="w-100" src="../assets/images/1dea8e59a481e6990ae1cd3afe819fb9.jpeg" alt="">
+      </swiper-slide>
+      <div class="swiper-pagination pagination-home text-right px-3 pb-1" 
+      slot="pagination">
+      </div>
+    </swiper>
   </div>
 
 
@@ -11,6 +24,30 @@
 
 
 export default {
-  
+  data(){
+    return {
+      swiperOption: {
+          pagination: {
+            el: '.pagination-home'
+          }
+        },
+        
+    }
+  }
 }
 </script>
+
+<style lang="scss">
+@import '../assets/scss/variables.scss';
+.pagination-home {
+  .swiper-pagination-bullet {
+    opacity: 1;
+    border-radius: 0.1538rem;
+    background: map-get($colors, 'white');
+    &.swiper-pagination-bullet-active {
+      background: map-get($colors, 'info');
+    }
+  }
+}
+  
+</style>
