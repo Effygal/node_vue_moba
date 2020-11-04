@@ -27,6 +27,8 @@
         <span>收起</span>
       </div>
     </div>
+    <!-- end of nav icons -->
+    <i class="iconfont icon-news text-primary fs-xl"></i>
   </div>
 
 
