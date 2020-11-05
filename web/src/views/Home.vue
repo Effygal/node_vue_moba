@@ -28,6 +28,56 @@
       </div>
     </div>
     <!-- end of nav icons -->
+
+    <m-Card icon="menu" title="新闻资讯">
+      <div class="nav jc-between">
+        <div class="nav-item active">
+          <div class="nav-link">热门</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+        <div class="nav-item">
+          <div class="nav-link">新闻</div>
+        </div>
+      </div>
+      <div class="pt-3">
+        <swiper>
+          <swiper-slide v-for="m in 5" :key="m">
+            <div class="py-2" v-for="n in 5" :key="n">
+              <span>[新闻]</span>
+              <span>|</span>
+              <span>新版本“星之队”即将上线</span>
+              <span>06/02</span>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
+    </m-Card>
+    <m-Card icon="menu" title="英雄列表">
+
+    </m-Card>
+    <m-Card icon="menu" title="精彩视频">
+
+    </m-Card>
+    <m-Card icon="menu" title="图文攻略">
+
+    </m-Card>
+    
+    <p>dd</p>
+    <p>dd</p>
+    <p>dd</p>
+    <p>dd</p>
+    <p>dd</p>
+    <p>dd</p>
+    <p>dd</p>
+    <p>dd</p>
     <i class="iconfont icon-news text-primary fs-xl"></i>
   </div>
 

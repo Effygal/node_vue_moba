@@ -8,6 +8,9 @@ import './assets/iconfont/iconfont.css'
 
 import 'swiper/dist/css/swiper.css'
 Vue.use(VueAwesomeSwiper, /* { default options with global component } */)
+
+import Card from './components/Card.vue'
+Vue.component('m-Card', Card)
 new Vue({
   router,
   render: h => h(App)
